@@ -43,7 +43,7 @@ export default function Home() {
 async function generateReactFromText(subPath, allowForEmpty) {
   try {
     var page = `export default function main() {\nreturn (\n<div className="ml-10">\n`;
-    let markdownFile = Bun.file(subPath + "\\main.md");
+    let markdownFile = Bun.file(subPath + "/main.md");
     let markdown = await markdownFile.text();
     // let doc = parse(markdown, { generator: generator }).htmlDocument();
     // const vals = Object.values(doc)[Object.values(doc).length - 2];
@@ -143,7 +143,7 @@ async function generateItemsArray(directory, exclusions) {
       navbarFile += navbarItem(dir.replace(/-/g, ' '));
       endOfNavbarFile += navBarMenuItem(dir.replace(/-/g, ' '));
     }
-    const path = directory + '\\' + dir;
+    const path = directory + '/' + dir;
     let desiredPath = `/${dir.replace(/ /g, '%20')}`;
     itemsFile += `...(pathname.slice(0,${desiredPath.length}) === '${desiredPath}' ? `;
     var items = [];
@@ -155,7 +155,7 @@ async function generateItemsArray(directory, exclusions) {
       // console.log(subDirectories);
       for (var z = 0; z < subDirectories.length; z++) {
         const subDir = subDirectories[z];
-        const subPath = path + "\\" + subDir;
+        const subPath = path + "/" + subDir;
         const result = await generateReactFromText(subPath, false);
         if (result == false) {
           continue;
