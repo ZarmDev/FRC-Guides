@@ -220,7 +220,7 @@ async function readFirstLine(filePath) {
   }
 }
 
-const dropdownConfig = Bun.file(configDirectory + "\\dropdowns.txt");
+const dropdownConfig = Bun.file(configDirectory + "/dropdowns.txt");
 let dropdowns = await dropdownConfig.text();
 dropdowns = dropdowns.split('\n');
 var tempList = [];
